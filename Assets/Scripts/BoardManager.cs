@@ -19,8 +19,8 @@ public class BoardManager : MonoBehaviour {
     public int rows = 10; 
     public int offset;
     public int offsetValue = 64;
-    public double xPos;
-    public double yPos;
+    public int xPos;
+    public int yPos;
     public GameObject[] floorTiles;
     private Transform boardHolder;
     void InitializeList()
@@ -36,9 +36,9 @@ public class BoardManager : MonoBehaviour {
             for(int y = 0; y < rows; y++)
             {
                 GameObject toInsantiate = floorTiles[UnityEngine.Random.Range(0, floorTiles.Length)];
-                yPos = y * 0.5;
-                xPos = x * 1.85;
-                GameObject instance = Instantiate(toInsantiate, new Vector3((int)xPos, (int)yPos, 0f), Quaternion.identity) as GameObject;
+                yPos = y;
+                xPos = x;
+                GameObject instance = Instantiate(toInsantiate, new Vector3(xPos, yPos, 0f), Quaternion.identity) as GameObject;
                 instance.transform.SetParent(boardHolder);
             }
             offset++;
